@@ -1,12 +1,12 @@
-# cvp — Security review package documentation
+# cvplus — Security review package documentation
 
-This document supports **Salesforce Security Review** and **AppExchange** submission for the **cvp** managed package (namespace: **cvp**). It describes the **Flow URL Redirect** Lightning web component (`flowUrlRedirect`).
+This document supports **Salesforce Security Review** and **AppExchange** submission for the **cvplus** managed package (namespace: **cvplus**). It describes the **Flow URL Redirect** Lightning web component (`flowUrlRedirect`).
 
 ## Solution overview
 
 | Item | Detail |
 | --- | --- |
-| **App / package name** | cvp |
+| **App / package name** | cvplus |
 | **Primary metadata** | Lightning Web Component bundle `flowUrlRedirect` |
 | **Surface** | Flow **Screen** component only (`lightning__FlowScreen`) |
 | **Purpose** | Navigate the user to an **admin-configured** URL from a Flow screen: same tab (`window.location.assign`) or new tab (`window.open` with `noopener,noreferrer`). |
@@ -62,19 +62,20 @@ npm run test:unit
 
 ## Package contents (this submission slice)
 
-For the **cvp URL Redirect** manifest, deploy or package **only**:
+For the **cvplus URL Redirect** manifest, deploy or package **only**:
 
 - `LightningComponentBundle` → `flowUrlRedirect`
 
-See `manifest/package-cvp-urlRedirect.xml`. **Flows are intentionally omitted** from this manifest per product scope; subscribers add their own Flows that reference the managed component.
+See `manifest/package-cvplus-urlRedirect.xml`. **Flows are intentionally omitted** from this manifest per product scope; subscribers add their own Flows that reference the managed component.
 
 ## Namespace and managed packaging
 
-After you register the **cvp** namespace on your Dev Hub, set it on the packaging org / project per Salesforce documentation. In subscriber orgs, the component API name will appear with the namespace prefix (for example `cvp__flowUrlRedirect` in API contexts, per Salesforce rules).
+After you register the **cvplus** namespace on your Dev Hub, set it on the packaging org / project per Salesforce documentation. In subscriber orgs, the component API name will appear with the namespace prefix (for example `cvplus__flowUrlRedirect` in API contexts, per Salesforce rules).
 
 ## Document control
 
 | Version | Date | Notes |
 | --- | --- | --- |
 | 1.0 | 2026-06-02 | Initial security-review package doc for Flow URL Redirect LWC |
-| 1.1 | 2026-06-02 | Namespace set to **cvp** |
+| 1.1 | 2026-06-02 | Earlier draft namespace **cvp** (not used) |
+| 1.2 | 2026-06-02 | Namespace **cvplus** |

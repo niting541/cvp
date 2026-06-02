@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--
     =============================================================================
-    cvp — Flow URL Redirect (canonical package manifest)
+    cvplus — Flow URL Redirect (canonical package manifest)
     =============================================================================
 
-    This manifest is the single source of truth for what ships in the cvp
+    This manifest is the single source of truth for what ships in the cvplus
     “URL redirect” slice: one Lightning web component bundle only.
 
     LightningComponentBundle: flowUrlRedirect
@@ -18,14 +18,14 @@
 
     Repo documentation (not deployed as metadata)
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    • docs/cvp-SECURITY_REVIEW.md — Partner Security Review / AppExchange notes
-    • docs/README-cvp-PACKAGE.md — namespace, CLI, 2GP pointers
+    • docs/cvplus-SECURITY_REVIEW.md — Partner Security Review / AppExchange notes
+    • docs/README-cvplus-PACKAGE.md — namespace, CLI, 2GP pointers
 
     Deploy (Salesforce CLI)
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     Use this file with project deploy start and the manifest flag, plus your org
-    alias. Full command examples are in README.md and docs/README-cvp-PACKAGE.md.
-    npm script name: deploy:cvp (see package.json).
+    alias. Full command examples are in README.md and docs/README-cvplus-PACKAGE.md.
+    npm script name: deploy:cvplus (see package.json).
 
     Use this manifest only so deploys and documentation stay aligned.
     =============================================================================

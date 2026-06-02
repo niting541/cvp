@@ -1,6 +1,6 @@
-# cvp — Flow URL Redirect (LWC only)
+# cvplus — Flow URL Redirect (LWC only)
 
-This repository contains **only** the **cvp Flow URL Redirect** Lightning web component (`flowUrlRedirect`), its tests, Salesforce DX tooling, and documentation for packaging and security review.
+This repository contains **only** the **cvplus Flow URL Redirect** Lightning web component (`flowUrlRedirect`), its tests, Salesforce DX tooling, and documentation for packaging and security review.
 
 There is **no Flow** or other Salesforce metadata in this repo; subscribers build their own Flows that use this screen component.
 
@@ -9,15 +9,15 @@ There is **no Flow** or other Salesforce metadata in this repo; subscribers buil
 | Path | Purpose |
 | --- | --- |
 | `force-app/main/default/lwc/flowUrlRedirect/` | LWC source and Jest tests |
-| `manifest/package-cvp-urlRedirect.xml` | **Canonical** deploy manifest (this component only; includes in-file LWC documentation) |
-| `docs/cvp-SECURITY_REVIEW.md` | Security review submission notes |
-| `docs/README-cvp-PACKAGE.md` | Namespace, CLI deploy, 2GP pointers |
+| `manifest/package-cvplus-urlRedirect.xml` | **Canonical** deploy manifest (this component only; includes in-file LWC documentation) |
+| `docs/cvplus-SECURITY_REVIEW.md` | Security review submission notes |
+| `docs/README-cvplus-PACKAGE.md` | Namespace, CLI deploy, 2GP pointers |
 
 ## Deploy
 
 ```bash
-sf project deploy start --manifest manifest/package-cvp-urlRedirect.xml --target-org YOUR_ALIAS
-npm run deploy:cvp -- --target-org YOUR_ALIAS
+sf project deploy start --manifest manifest/package-cvplus-urlRedirect.xml --target-org YOUR_ALIAS
+npm run deploy:cvplus -- --target-org YOUR_ALIAS
 ```
 
 ## Salesforce DX

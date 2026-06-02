@@ -2,8 +2,8 @@
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>66.0</apiVersion>
     <isExposed>true</isExposed>
-    <masterLabel>cvp Flow URL Redirect</masterLabel>
-    <description>cvp: Flow screen action that navigates to an admin-configured URL. Accepts https or http absolute URLs (no credentials in URL) or a single leading-slash org path. Does not call Apex, store data, or load third-party scripts. Use only trusted Flow logic to set the target URL.</description>
+    <masterLabel>cvplus Flow URL Redirect</masterLabel>
+    <description>cvplus: Flow screen action that navigates to an admin-configured URL. Accepts https or http absolute URLs (no credentials in URL) or a single leading-slash org path. Does not call Apex, store data, or load third-party scripts. Use only trusted Flow logic to set the target URL.</description>
     <targets>
         <target>lightning__FlowScreen</target>
     </targets>

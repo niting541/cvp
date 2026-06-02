@@ -68,6 +68,8 @@ For the **cvplus URL Redirect** manifest, deploy or package **only**:
 
 See `manifest/package-cvplus-urlRedirect.xml`. **Flows are intentionally omitted** from this manifest per product scope; subscribers add their own Flows that reference the managed component.
 
+For **2GP** (managed package versions from this repo), see `docs/README-2GP-SETUP.md` and `sfdx-project.json` (`package`, `versionNumber`, `packageAliases` after package create).
+
 ## Namespace and managed packaging
 
 After you register the **cvplus** namespace on your Dev Hub, set it on the packaging org / project per Salesforce documentation. In subscriber orgs, the component API name will appear with the namespace prefix (for example `cvplus__flowUrlRedirect` in API contexts, per Salesforce rules).
@@ -79,3 +81,4 @@ After you register the **cvplus** namespace on your Dev Hub, set it on the packa
 | 1.0 | 2026-06-02 | Initial security-review package doc for Flow URL Redirect LWC |
 | 1.1 | 2026-06-02 | Earlier draft namespace **cvp** (not used) |
 | 1.2 | 2026-06-02 | Namespace **cvplus** |
+| 1.3 | 2026-06-02 | 2GP wiring in `sfdx-project.json`; added `docs/README-2GP-SETUP.md` |

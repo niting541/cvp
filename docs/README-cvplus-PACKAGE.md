@@ -34,3 +34,7 @@ Use **`manifest/package-cvplus-urlRedirect.xml`** when you want tooling to resol
 ## Security review artifact
 
 Submit **`docs/cvplus-SECURITY_REVIEW.md`** (and the solution as packaged) through the Partner Security Review process. Keep the doc updated if you add Apex, callouts, or new surfaces later.
+
+## Second-generation packaging (2GP)
+
+After the Dev Hub is connected and the **cvplus** namespace is on that org, follow **[README-2GP-SETUP.md](README-2GP-SETUP.md)** to create the managed package, fill `packageAliases`, and run **`sf package version create`**.

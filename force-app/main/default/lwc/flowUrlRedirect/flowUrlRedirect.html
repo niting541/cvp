@@ -1,0 +1,19 @@
+<template>
+    <div class="host">
+        <template lwc:if={errorMessage}>
+            <div class="error-region" role="alert" aria-live="assertive">
+                <lightning-formatted-text value={errorMessage} class="error-text"></lightning-formatted-text>
+                <lightning-button
+                    class="close-btn"
+                    variant="brand"
+                    label="Close"
+                    title="Close this screen"
+                    onclick={handleCloseFlow}
+                ></lightning-button>
+            </div>
+        </template>
+        <template lwc:else>
+            <lightning-spinner alternative-text="Opening link" size="medium"></lightning-spinner>
+        </template>
+    </div>
+</template>

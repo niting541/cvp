@@ -1,30 +1,25 @@
-# Salesforce DX Project
+# cvp — Flow URL Redirect (LWC only)
 
-## cvp (AppExchange / security review slice)
+This repository contains **only** the **cvp Flow URL Redirect** Lightning web component (`flowUrlRedirect`), its tests, Salesforce DX tooling, and documentation for packaging and security review.
 
-This repo includes a **Flow URL Redirect** LWC packaged for namespace **cvp**. Use the narrow manifest and docs below when you prepare a **separate GitHub project or branch** for that app.
+There is **no Flow** or other Salesforce metadata in this repo; subscribers build their own Flows that use this screen component.
 
-- **Deploy manifest (LWC only, no Flow):** [`manifest/package-cvp-urlRedirect.xml`](manifest/package-cvp-urlRedirect.xml)
-- **Security review documentation:** [`docs/cvp-SECURITY_REVIEW.md`](docs/cvp-SECURITY_REVIEW.md)
-- **Packaging / GitHub notes:** [`docs/README-cvp-PACKAGE.md`](docs/README-cvp-PACKAGE.md)
+## Contents
 
----
+| Path | Purpose |
+| --- | --- |
+| `force-app/main/default/lwc/flowUrlRedirect/` | LWC source and Jest tests |
+| `manifest/package-cvp-urlRedirect.xml` | Deploy / package manifest (this component only) |
+| `manifest/package.xml` | Same scope (explicit `flowUrlRedirect` member) |
+| `docs/cvp-SECURITY_REVIEW.md` | Security review submission notes |
+| `docs/README-cvp-PACKAGE.md` | Namespace, CLI deploy, 2GP pointers |
 
-## Next steps (Salesforce DX template)
+## Deploy
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+```bash
+sf project deploy start --manifest manifest/package-cvp-urlRedirect.xml --target-org YOUR_ALIAS
+```
 
-## How Do You Plan to Deploy Your Changes?
+## Salesforce DX
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
-
-## Configure Your Salesforce DX Project
-
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
-
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+See [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm) for project layout and CLI usage.

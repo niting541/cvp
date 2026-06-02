@@ -1,16 +1,12 @@
-# cvp — separate package (GitHub / CI)
+# cvp — package notes (GitHub / CI)
 
-This repo can hold **multiple deployment slices**. The **cvp AppExchange** slice is the **Flow URL Redirect** LWC only (no Flow metadata in the package manifest).
+This repository is **intentionally minimal**: the **Flow URL Redirect** LWC (`flowUrlRedirect`), tests, DX config, manifests, and docs. **No Flow metadata** is shipped from this repo; subscribers add their own Flows that reference the managed screen component.
 
-## What to push to GitHub
-
-You can use **one repository** with:
+## Repository layout
 
 - Source: `force-app/main/default/lwc/flowUrlRedirect/`
-- Narrow manifest: `manifest/package-cvp-urlRedirect.xml`
+- Manifest: `manifest/package-cvp-urlRedirect.xml` (same members as `manifest/package.xml` for this repo)
 - Security review doc: `docs/cvp-SECURITY_REVIEW.md`
-
-Alternatively, create a **dedicated GitHub repository** and copy only those paths plus `sfdx-project.json`, `package.json`, and `jest.config.js` if you want a minimal repo for this app.
 
 ## Create / verify the namespace (Dev Hub)
 

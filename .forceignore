@@ -1,8 +1,8 @@
 # List files or directories below to ignore them when running force:source:push, force:source:pull, and force:source:status
 # More information: https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_exclude_source.htm
 #
-
-package.xml
+# Deploy scope for this repo uses manifest/package-cvp-urlRedirect.xml with the CLI
+# manifest flag; no package.xml entry here (avoids hiding manifest files by name).
 
 # LWC configuration files
 **/jsconfig.json

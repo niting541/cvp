@@ -5,7 +5,7 @@ This repository is **intentionally minimal**: the **Flow URL Redirect** LWC (`fl
 ## Repository layout
 
 - Source: `force-app/main/default/lwc/flowUrlRedirect/`
-- Manifest: `manifest/package-cvp-urlRedirect.xml` (same members as `manifest/package.xml` for this repo)
+- Manifest: **`manifest/package-cvp-urlRedirect.xml`** (canonical; includes XML comments describing the LWC and deploy commands)
 - Security review doc: `docs/cvp-SECURITY_REVIEW.md`
 
 ## Create / verify the namespace (Dev Hub)

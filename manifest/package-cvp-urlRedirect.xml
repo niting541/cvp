@@ -1,4 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+    =============================================================================
+    cvp — Flow URL Redirect (canonical package manifest)
+    =============================================================================
+
+    This manifest is the single source of truth for what ships in the cvp
+    “URL redirect” slice: one Lightning web component bundle only.
+
+    LightningComponentBundle: flowUrlRedirect
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    • Target: lightning__FlowScreen (Flow Screen element).
+    • Purpose: Navigate the user to a Flow-supplied URL (same tab or new tab),
+      with client-side validation (http/https only, optional org-relative path,
+      no credentials in URL, length and obfuscation checks). See the bundle’s
+      urlRedirectUtils.js for the exact rules.
+    • Inputs (Flow): targetUrl (String), openInNewWindow (Boolean).
+
+    Repo documentation (not deployed as metadata)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    • docs/cvp-SECURITY_REVIEW.md — Partner Security Review / AppExchange notes
+    • docs/README-cvp-PACKAGE.md — namespace, CLI, 2GP pointers
+
+    Deploy (Salesforce CLI)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Use this file with project deploy start and the manifest flag, plus your org
+    alias. Full command examples are in README.md and docs/README-cvp-PACKAGE.md.
+    npm script name: deploy:cvp (see package.json).
+
+    Use this manifest only so deploys and documentation stay aligned.
+    =============================================================================
+-->
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>flowUrlRedirect</members>

@@ -10,6 +10,7 @@ This document supports **Salesforce Security Review** and **AppExchange** submis
 | **Primary metadata** | Lightning Web Component bundle `flowUrlRedirect` |
 | **Surface** | Flow **Screen** component only (`lightning__FlowScreen`) |
 | **Purpose** | Navigate the user to an **admin-configured** URL from a Flow screen: same tab (`window.location.assign`) or new tab (`window.open` with `noopener,noreferrer`). |
+| **Distribution** | **Second-generation managed package (2GP)**. Dev Hub package name: `cvplusUrlRedirect`. Subscriber package and version ids for the current build are kept in **`sfdx-project.json`** → `packageAliases` (update this doc’s narrative only when behavior changes; use Partner Console / CLI for the exact `04t` id at submission time). |
 
 There is **no Apex**, **no callouts**, **no OAuth**, **no data persistence**, **no custom objects**, and **no third-party JavaScript libraries** in this package slice.
 
@@ -72,7 +73,7 @@ For **2GP** (managed package versions from this repo), see `docs/README-2GP-SETU
 
 ## Namespace and managed packaging
 
-After you register the **cvplus** namespace on your Dev Hub, set it on the packaging org / project per Salesforce documentation. In subscriber orgs, the component API name will appear with the namespace prefix (for example `cvplus__flowUrlRedirect` in API contexts, per Salesforce rules).
+After you register the **cvplus** namespace on your Dev Hub, create the managed package and versions per **`docs/README-2GP-SETUP.md`**. In subscriber orgs, the component API name appears with the namespace prefix (for example `cvplus__flowUrlRedirect` in API contexts, per Salesforce rules).
 
 ## Document control
 
@@ -82,3 +83,4 @@ After you register the **cvplus** namespace on your Dev Hub, set it on the packa
 | 1.1 | 2026-06-02 | Earlier draft namespace **cvp** (not used) |
 | 1.2 | 2026-06-02 | Namespace **cvplus** |
 | 1.3 | 2026-06-02 | 2GP wiring in `sfdx-project.json`; added `docs/README-2GP-SETUP.md` |
+| 1.4 | 2026-06-03 | Note 2GP distribution and that live package/version ids live in `sfdx-project.json` |

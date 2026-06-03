@@ -10,7 +10,7 @@ This document supports **Salesforce Security Review** and **AppExchange** submis
 | **Primary metadata** | Lightning Web Component bundle `flowUrlRedirect` |
 | **Surface** | Flow **Screen** component only (`lightning__FlowScreen`) |
 | **Purpose** | Navigate the user to an **admin-configured** URL from a Flow screen: same tab (`window.location.assign`) or new tab (`window.open` with `noopener,noreferrer`). |
-| **Distribution** | **Second-generation managed package (2GP)**. Dev Hub package name: `cvplusUrlRedirect`. Subscriber package and version ids for the current build are kept in **`sfdx-project.json`** → `packageAliases` (update this doc’s narrative only when behavior changes; use Partner Console / CLI for the exact `04t` id at submission time). |
+| **Distribution** | **Second-generation managed package (2GP)**. Dev Hub package name: `cvplusUrlRedirect` (`0HoQj000000021pKAA`). **Current installable version:** **0.1.0.2**, Subscriber id **`04tQj000000Gta1IAC`** (alias `cvplusUrlRedirect@0.1.0-2` in `sfdx-project.json` → `packageAliases`). Update this row when you ship a new `04t`. |
 
 There is **no Apex**, **no callouts**, **no OAuth**, **no data persistence**, **no custom objects**, and **no third-party JavaScript libraries** in this package slice.
 
@@ -84,3 +84,4 @@ After you register the **cvplus** namespace on your Dev Hub, create the managed 
 | 1.2 | 2026-06-02 | Namespace **cvplus** |
 | 1.3 | 2026-06-02 | 2GP wiring in `sfdx-project.json`; added `docs/README-2GP-SETUP.md` |
 | 1.4 | 2026-06-03 | Note 2GP distribution and that live package/version ids live in `sfdx-project.json` |
+| 1.5 | 2026-06-03 | Reference **v0.1.0.2** / **`04tQj000000Gta1IAC`**; same-tab redirect fix in build |

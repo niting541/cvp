@@ -38,3 +38,7 @@ Submit **`docs/cvplus-SECURITY_REVIEW.md`** (and the solution as packaged) throu
 ## Second-generation packaging (2GP)
 
 After the Dev Hub is connected and the **cvplus** namespace is on that org, follow **[README-2GP-SETUP.md](README-2GP-SETUP.md)** to create the managed package, fill `packageAliases`, and run **`sf package version create`**.
+
+## Current managed package reference
+
+Latest **Subscriber Package Version Id** and install URLs are documented in **[README-2GP-SETUP.md §5](README-2GP-SETUP.md#5-install-a-package-version-in-another-org)** and in **`sfdx-project.json`** → `packageAliases` (today: **`cvplusUrlRedirect@0.1.0-2`** → **`04tQj000000Gta1IAC`**).

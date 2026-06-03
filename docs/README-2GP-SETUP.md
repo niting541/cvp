@@ -2,7 +2,7 @@
 
 Use this after your **Dev Hub** is authenticated and the **`cvplus`** namespace exists on that Dev Hub (Partner Business Org / signup flow per [Salesforce packaging docs](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp.htm)).
 
-This repo is wired for 2GP in `sfdx-project.json`: package alias **`cvplusUrlRedirect`** (maps to `0Ho…`), optional **`cvplusUrlRedirect@0.1.0-1`** → `04t…` after the first successful version create, path **`force-app`**, and `versionNumber` **`0.1.0.NEXT`** (CLI may adjust after versioning).
+This repo is wired for 2GP in `sfdx-project.json`: package alias **`cvplusUrlRedirect`** → **`0HoQj000000021pKAA`**, latest version alias **`cvplusUrlRedirect@0.1.0-2`** → **`04tQj000000Gta1IAC`** (version **0.1.0.2**), path **`force-app`**, and `versionNumber` **`0.1.0.NEXT`** for the next build.
 
 ## 1. Dev Hub and default hub
 
@@ -38,7 +38,7 @@ Some CLI versions update `sfdx-project.json` for you; if they do, verify the key
 
 Until this entry exists, **`sf package version create`** will not resolve the package.
 
-## 3. Create the first package version
+## 3. Create a package version
 
 ```bash
 sf package version create -p cvplusUrlRedirect -x -w 30 -v YOUR_DEV_HUB_ALIAS
@@ -49,7 +49,7 @@ sf package version create -p cvplusUrlRedirect -x -w 30 -v YOUR_DEV_HUB_ALIAS
 
 Optional: `-f config/project-scratch-def.json` if you need specific scratch features for validation (often optional for LWC-only packages).
 
-On success you get a **Subscriber Package Version Id** (`04t…`). Install in a test org with **`sf package install`** (or the install URL from the Dev Hub UI).
+On success you get a **Subscriber Package Version Id** (`04t…`). The CLI usually appends an alias like **`cvplusUrlRedirect@0.1.0-N`** to `packageAliases` in `sfdx-project.json`.
 
 ## 4. Day-to-day: deploy source vs package version
 
@@ -62,13 +62,23 @@ Bump **`versionNumber`** in `sfdx-project.json` when you move to **0.1.1.NEXT** 
 
 ## 5. Install a package version in another org
 
-After `package version create` succeeds, the CLI adds an alias under `packageAliases` (for example `cvplusUrlRedirect@0.1.0-1` → `04t…`). Install in a test org:
+After `package version create` succeeds, use the newest **`cvplusUrlRedirect@0.1.0-N`** entry in `packageAliases` (today: **`cvplusUrlRedirect@0.1.0-2`** → **`04tQj000000Gta1IAC`**).
+
+**Production install URL** (log in to the target org first):
+
+`https://login.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000Gta1IAC`
+
+**Sandbox install URL:**
+
+`https://test.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000Gta1IAC`
+
+CLI:
 
 ```bash
-sf package install --package 04tXXXXXXXXXXXXXXX --target-org TEST_ORG_ALIAS --wait 20
+sf package install --package 04tQj000000Gta1IAC --target-org TEST_ORG_ALIAS --wait 20
 ```
 
-Use the **Subscriber Package Version Id** (`04t…`) from the command output or from `sfdx-project.json`.
+Replace the `04t` id when you publish a newer package version.
 
 ## 6. AppExchange / Security Review
 

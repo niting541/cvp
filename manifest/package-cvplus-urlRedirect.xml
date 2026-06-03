@@ -21,6 +21,8 @@
     • docs/cvplus-SECURITY_REVIEW.md — Partner Security Review / AppExchange notes
     • docs/README-cvplus-PACKAGE.md — namespace, CLI, 2GP pointers
 
+    • 2GP: see sfdx-project.json packageAliases (example: cvplusUrlRedirect@0.1.0-2).
+
     Deploy (Salesforce CLI)
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     Use this file with project deploy start and the manifest flag, plus your org

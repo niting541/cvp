@@ -12,7 +12,14 @@ There is **no Flow** or other Salesforce metadata in this repo; subscribers buil
 | `manifest/package-cvplus-urlRedirect.xml` | **Canonical** deploy manifest (this component only; includes in-file LWC documentation) |
 | `docs/cvplus-SECURITY_REVIEW.md` | Security review submission notes |
 | `docs/README-cvplus-PACKAGE.md` | Namespace, CLI deploy, 2GP pointers |
-| [`docs/README-2GP-SETUP.md`](docs/README-2GP-SETUP.md) | Create managed package + first **package version** after Dev Hub is ready |
+| [`docs/README-2GP-SETUP.md`](docs/README-2GP-SETUP.md) | 2GP: package create, new versions, **current install URLs** |
+
+## Install managed package (current build)
+
+As of the latest repo state, **version 0.1.0.2** — Subscriber id **`04tQj000000Gta1IAC`** (see `sfdx-project.json` → `packageAliases`).
+
+- Production: `https://login.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000Gta1IAC`
+- Sandbox: `https://test.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000Gta1IAC`
 
 ## Deploy
 

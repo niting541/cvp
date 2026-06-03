@@ -34,6 +34,7 @@ describe('c-flow-url-redirect', () => {
 
     it('does not open a new window when openInNewWindow is false', () => {
         const openSpy = jest.spyOn(window, 'open').mockReturnValue({});
+        const assignSpy = jest.spyOn(window.location, 'assign').mockImplementation(() => {});
 
         const element = createElement('c-flow-url-redirect', { is: FlowUrlRedirect });
         element.targetUrl = 'https://example.com/here';
@@ -45,10 +46,23 @@ describe('c-flow-url-redirect', () => {
 
         document.body.appendChild(element);
 
-        return Promise.resolve().then(() => {
-            expect(openSpy).not.toHaveBeenCalled();
-            expect(finishListener).toHaveBeenCalled();
-        });
+        return Promise.resolve()
+            .then(() => {
+                expect(openSpy).not.toHaveBeenCalled();
+                expect(finishListener).toHaveBeenCalled();
+            })
+            .then(
+                () =>
+                    new Promise((resolve) => {
+                        setTimeout(resolve, 0);
+                    })
+            )
+            .then(() => {
+                expect(assignSpy).toHaveBeenCalledWith(expect.stringMatching(/^https:\/\/example\.com\/here/));
+            })
+            .finally(() => {
+                assignSpy.mockRestore();
+            });
     });
 
     it('does not finish when the URL is invalid', () => {

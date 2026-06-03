@@ -42,9 +42,12 @@ export default class FlowUrlRedirect extends LightningElement {
                 }
             } else {
                 this.dispatchEvent(new FlowNavigationFinishEvent());
-                queueMicrotask(() => {
+                // Macrotask: Flow must finish screen teardown before assign; queueMicrotask
+                // runs too early and Lightning/Flow can swallow same-tab navigation.
+                // eslint-disable-next-line @lwc/lwc/no-async-operation
+                window.setTimeout(() => {
                     window.location.assign(href);
-                });
+                }, 0);
                 return;
             }
         } catch {

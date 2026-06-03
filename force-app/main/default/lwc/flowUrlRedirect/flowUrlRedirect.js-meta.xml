@@ -3,7 +3,7 @@
     <apiVersion>66.0</apiVersion>
     <isExposed>true</isExposed>
     <masterLabel>cvplus Flow URL Redirect</masterLabel>
-    <description>cvplus: Flow screen action that navigates to an admin-configured URL. Accepts https or http absolute URLs (no credentials in URL) or a single leading-slash org path. Does not call Apex, store data, or load third-party scripts. Use only trusted Flow logic to set the target URL.</description>
+    <description>cvplus: Flow screen redirect to trusted URLs (https/http or org path /…). No Apex or third-party scripts; set targetUrl from Flow only.</description>
     <targets>
         <target>lightning__FlowScreen</target>
     </targets>

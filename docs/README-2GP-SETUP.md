@@ -2,7 +2,7 @@
 
 Use this after your **Dev Hub** is authenticated and the **`cvplus`** namespace exists on that Dev Hub (Partner Business Org / signup flow per [Salesforce packaging docs](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp.htm)).
 
-This repo is already wired for 2GP in `sfdx-project.json`: package alias key **`cvplusUrlRedirect`**, `versionNumber` **`1.0.0.NEXT`**, path **`force-app`**. `packageAliases` is empty until you create the package once (step 2).
+This repo is wired for 2GP in `sfdx-project.json`: package alias **`cvplusUrlRedirect`** (maps to `0Ho…`), optional **`cvplusUrlRedirect@0.1.0-1`** → `04t…` after the first successful version create, path **`force-app`**, and `versionNumber` **`0.1.0.NEXT`** (CLI may adjust after versioning).
 
 ## 1. Dev Hub and default hub
 
@@ -58,8 +58,18 @@ On success you get a **Subscriber Package Version Id** (`04t…`). Install in a 
 | Push metadata to an org for testing | `sf project deploy start --manifest manifest/package-cvplus-urlRedirect.xml --target-org ALIAS` |
 | Cut a new **installable** 2GP version | `sf package version create -p cvplusUrlRedirect -x -w 30 -v YOUR_DEV_HUB_ALIAS` |
 
-Bump **`versionNumber`** in `sfdx-project.json` when you move to **1.0.1.NEXT** (patch), **1.1.0.NEXT** (minor), etc., per [version numbering rules](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_version_number.htm).
+Bump **`versionNumber`** in `sfdx-project.json` when you move to **0.1.1.NEXT** (patch), **0.2.0.NEXT** (minor), etc., per [version numbering rules](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_version_number.htm).
 
-## 5. AppExchange / Security Review
+## 5. Install a package version in another org
+
+After `package version create` succeeds, the CLI adds an alias under `packageAliases` (for example `cvplusUrlRedirect@0.1.0-1` → `04t…`). Install in a test org:
+
+```bash
+sf package install --package 04tXXXXXXXXXXXXXXX --target-org TEST_ORG_ALIAS --wait 20
+```
+
+Use the **Subscriber Package Version Id** (`04t…`) from the command output or from `sfdx-project.json`.
+
+## 6. AppExchange / Security Review
 
 Submit the **package version** from the Partner Console; keep **`docs/cvplus-SECURITY_REVIEW.md`** in Git for the security questionnaire (it is not deployed as metadata).

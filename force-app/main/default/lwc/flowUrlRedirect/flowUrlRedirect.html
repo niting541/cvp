@@ -1,4 +1,8 @@
 <template>
+    <!--
+      Security (markup): targetUrl is used only in JS after validation in urlRedirectUtils.js;
+      it is never written into the DOM or unsafe APIs. Messages use lightning-formatted-text (escaped).
+    -->
     <div class="host">
         <template lwc:if={errorMessage}>
             <div class="error-region" role="alert" aria-live="assertive">
@@ -7,7 +11,6 @@
                     class="close-btn"
                     variant="brand"
                     label="Close"
-                    title="Close this screen"
                     onclick={handleCloseFlow}
                 ></lightning-button>
             </div>

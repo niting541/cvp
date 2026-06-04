@@ -1,3 +1,13 @@
+/**
+ * Flow screen action: navigates to a URL supplied only by Flow configuration (admin-controlled).
+ *
+ * Security (AppExchange / secure coding):
+ * - Navigation targets are validated in urlRedirectUtils (http/https only, or single-slash org paths;
+ *   blocks javascript:, data:, credentials-in-URL, control chars, bidi/invisible spoofing, etc.).
+ * - Same-tab navigation uses location.assign after FlowNavigationFinishEvent so the Flow runtime
+ *   tears down cleanly; new-tab uses window.open(..., 'noopener,noreferrer').
+ * - User-visible errors are plain strings rendered with lightning-formatted-text (no raw HTML / DOM injection).
+ */
 import { LightningElement, api } from 'lwc';
 import { FlowNavigationFinishEvent } from 'lightning/flowSupport';
 import { resolveNavigationHref } from './urlRedirectUtils';
@@ -8,6 +18,7 @@ export default class FlowUrlRedirect extends LightningElement {
     /** True = new tab/window; false or unset = same tab */
     @api openInNewWindow;
 
+    /** Set only from static copy when validation or the browser blocks navigation (never raw user HTML). */
     errorMessage;
 
     connectedCallback() {

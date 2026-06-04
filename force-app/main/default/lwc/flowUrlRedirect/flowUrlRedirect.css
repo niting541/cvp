@@ -1,3 +1,10 @@
+/**
+ * Layout and SLDS-aligned error styling only. No external assets or dynamic URLs in CSS.
+ */
+:host {
+    display: block;
+}
+
 .host {
     min-height: 4rem;
     display: flex;

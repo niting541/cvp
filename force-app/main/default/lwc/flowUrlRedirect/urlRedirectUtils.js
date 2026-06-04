@@ -7,9 +7,16 @@ const BIDI_SPOOF = /[\u202a-\u202e]/;
 const INVISIBLE_FORMAT = /[\u200b-\u200d\ufeff]/;
 
 /**
+ * C0/C1-style controls and Unicode line/paragraph separators (not covered by trim()).
+ * Rejecting these avoids parser/UI ambiguity; legitimate URLs do not contain raw controls.
+ */
+const DISALLOWED_CONTROLS = /[\0\r\n\u000b\u000c\u2028\u2029]/;
+
+/**
  * Resolves a safe navigation href for Flow-driven redirects (admin-controlled input).
  * - Absolute: http or https only, no embedded credentials (blocks javascript:, data:, etc.).
- * - Internal Lightning-style: path starting with a single "/" (not "//"), resolved against baseOrigin.
+ * - Internal Lightning-style: path starting with a single "/" (not "//"), resolved against baseOrigin;
+ *   resolved URL must stay on the same origin as baseOrigin.
  * - Rejects control characters, backslashes, overlong strings, and common URL obfuscation tricks.
  *
  * @param {string} [raw]
@@ -24,7 +31,7 @@ export function resolveNavigationHref(raw, baseOrigin) {
     if (!trimmed || trimmed.length > MAX_LEN) {
         return null;
     }
-    if (/[\r\n\0]/.test(trimmed) || BIDI_SPOOF.test(trimmed) || INVISIBLE_FORMAT.test(trimmed)) {
+    if (DISALLOWED_CONTROLS.test(trimmed) || BIDI_SPOOF.test(trimmed) || INVISIBLE_FORMAT.test(trimmed)) {
         return null;
     }
     if (trimmed.includes('\\')) {
@@ -36,7 +43,13 @@ export function resolveNavigationHref(raw, baseOrigin) {
             return null;
         }
         try {
-            return new URL(trimmed, baseOrigin).href;
+            const resolved = new URL(trimmed, baseOrigin);
+            const base = new URL(baseOrigin);
+            // Defense in depth: relative input must not resolve off the org origin (parser quirks).
+            if (resolved.origin !== base.origin) {
+                return null;
+            }
+            return resolved.href;
         } catch {
             return null;
         }

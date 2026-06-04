@@ -5,17 +5,18 @@
       "versionNumber": "0.1.0.NEXT",
       "path": "force-app",
       "default": true,
-      "package": "cvplusUrlRedirect",
-      "versionDescription": "Flow URL Redirect LWC; v0.1.0.2 same-tab redirect timing fix (setTimeout after Flow finish)."
+      "package": "cvplus",
+      "versionDescription": "URL Navigator — Flow screen redirect LWC with client-side URL validation (http/https or same-origin path)."
     }
   ],
-  "name": "cvplus",
+  "name": "URL Navigator",
   "namespace": "cvplus",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "66.0",
   "defaultLwcLanguage": "javascript",
   "packageAliases": {
-    "cvplusUrlRedirect": "0HoQj000000021pKAA",
-    "cvplusUrlRedirect@0.1.0-2": "04tQj000000Gta1IAC"
+    "cvplus": "0HoQj000000021pKAA",
+    "cvplus@0.1.0-2": "04tQj000000Gta1IAC",
+    "cvplus@0.1.0-3": "04tQj000000Gu1RIAS"
   }
 }

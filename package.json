@@ -2,9 +2,9 @@
   "name": "salesforce-app",
   "private": true,
   "version": "1.0.0",
-  "description": "cvplus: Flow URL Redirect LWC (canonical manifest manifest/package-cvplus-urlRedirect.xml).",
+  "description": "URL Navigator: Flow URL Redirect LWC (manifest manifest/package-url-navigator.xml).",
   "scripts": {
-    "deploy:cvplus": "sf project deploy start --manifest manifest/package-cvplus-urlRedirect.xml",
+    "deploy:urlNavigator": "sf project deploy start --manifest manifest/package-url-navigator.xml",
     "lint": "eslint **/{aura,lwc}/**/*.js",
     "test": "npm run test:unit",
     "test:unit": "sfdx-lwc-jest",

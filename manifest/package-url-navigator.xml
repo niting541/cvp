@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--
     =============================================================================
-    cvplus — Flow URL Redirect (canonical package manifest)
+    URL Navigator — Flow URL Redirect (canonical package manifest)
     =============================================================================
 
-    This manifest is the single source of truth for what ships in the cvplus
-    “URL redirect” slice: one Lightning web component bundle only.
+    Registered namespace (2GP): cvplus — product / listing name: URL Navigator.
+
+    This manifest is the single source of truth for what ships in this slice:
+    one Lightning web component bundle only.
 
     LightningComponentBundle: flowUrlRedirect
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -18,18 +20,15 @@
 
     Repo documentation (not deployed as metadata)
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    • docs/cvplus-SECURITY_REVIEW.md — Partner Security Review / AppExchange notes
-    • docs/README-cvplus-PACKAGE.md — namespace, CLI, 2GP pointers
+    • docs/PACKAGE_DOCUMENTATION.md — Package documentation, security reviewer appendix, examples
+    • docs/README-url-navigator-PACKAGE.md — namespace, CLI, 2GP pointers
 
-    • 2GP: see sfdx-project.json packageAliases (example: cvplusUrlRedirect@0.1.0-2).
+    • 2GP: package alias cvplus (see sfdx-project.json → packageAliases).
 
     Deploy (Salesforce CLI)
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Use this file with project deploy start and the manifest flag, plus your org
-    alias. Full command examples are in README.md and docs/README-cvplus-PACKAGE.md.
-    npm script name: deploy:cvplus (see package.json).
+    npm script: deploy:urlNavigator (see package.json).
 
-    Use this manifest only so deploys and documentation stay aligned.
     =============================================================================
 -->
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">

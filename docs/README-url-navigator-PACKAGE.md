@@ -30,7 +30,11 @@ Use **`manifest/package-url-navigator.xml`** when you want tooling to resolve **
 
 ## Security Review / AppExchange
 
-Submit **`docs/PACKAGE_DOCUMENTATION.md`** (and the solution as packaged) through the Partner Security Review process. Keep the doc updated if you add Apex, callouts, or new surfaces later.
+1. Follow **[`docs/SECURITY_REVIEW_SUBMISSION_STEPS.md`](SECURITY_REVIEW_SUBMISSION_STEPS.md)** (ordered steps: pre-submit, Partner portal, post-review).  
+2. Fill or attach **[`docs/SECURITY_REVIEW_QUESTIONNAIRE.md`](SECURITY_REVIEW_QUESTIONNAIRE.md)** for portal questions.  
+3. Attach **[`docs/PACKAGE_DOCUMENTATION.md`](PACKAGE_DOCUMENTATION.md)** as the technical solution description.
+
+Keep all three files updated when you add Apex, callouts, new metadata, or ship a new **`04t`** version.
 
 ## Second-generation packaging (2GP)
 

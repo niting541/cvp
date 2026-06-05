@@ -56,7 +56,7 @@ The **business assumption** is that **administrators** (or trusted automation) d
 | **4** | [4. Component details](#4-component-details) | Deep dive: Flow URL Redirect |
 | **5** | [5. Configuration details](#5-configuration-details) | Flow inputs, behaviors, popups |
 | **6** | [6. Examples](#6-examples) | Scenarios and expected outcomes |
-| **7** | [7. Appendix](#7-appendix) | Limits, versioning, data handling, reviewer notes |
+| **7** | [7. Appendix](#7-appendix) | Limits, versioning, reviewer notes, **Security Review docs (Section 7.5)** |
 
 ---
 
@@ -299,12 +299,22 @@ Values below mirror `sfdx-project.json` at documentation time; **reconcile befor
 | **0.1.0.3** | URL validation hardening, Flow finish + deferred same-tab navigation, security-oriented metadata. |
 | **Earlier builds** | See git history and Dev Hub package version list for deltas prior to 0.1.0.3. |
 
-### 7.5 Document history
+### 7.5 Partner Security Review — where to go next
+
+| Document | Purpose |
+| --- | --- |
+| [`SECURITY_REVIEW_SUBMISSION_STEPS.md`](SECURITY_REVIEW_SUBMISSION_STEPS.md) | **Ordered checklist:** Partner Community, which `04t` to submit, uploads, post-review resubmits. |
+| [`SECURITY_REVIEW_QUESTIONNAIRE.md`](SECURITY_REVIEW_QUESTIONNAIRE.md) | **Draft answers** for common questionnaire topics (copy into the Partner portal; update when the package changes). |
+
+Start with the **submission steps** file, then use this **PACKAGE_DOCUMENTATION** as the technical attachment and the **questionnaire** file for paste-ready answers.
+
+### 7.6 Document history
 
 | Revision | Date | Authoring note |
 | --- | --- | --- |
 | 1.0 | 2026-06-04 | Initial standalone package documentation (not derived from prior security-review drafts). |
 | 1.1 | 2026-06-05 | Package **0.1.0.4** / `04tQj000000GuO1IAK`; Public URL required; install URLs refreshed. |
+| 1.2 | 2026-06-05 | Linked **Security Review** submission steps and questionnaire (Section 7.5). |
 
 ---
 

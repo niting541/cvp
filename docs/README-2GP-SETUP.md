@@ -94,4 +94,8 @@ Replace the `04t` id when you publish a newer package version.
 
 ## 6. AppExchange / Security Review
 
-Submit the **package version** from the Partner Console; keep **`docs/PACKAGE_DOCUMENTATION.md`** in Git for the security questionnaire and subscriber-facing technical reference (it is not deployed as metadata).
+Submit the **package version** from the Partner Console. Use:
+
+- **[`docs/SECURITY_REVIEW_SUBMISSION_STEPS.md`](SECURITY_REVIEW_SUBMISSION_STEPS.md)** — step-by-step submission checklist  
+- **[`docs/SECURITY_REVIEW_QUESTIONNAIRE.md`](SECURITY_REVIEW_QUESTIONNAIRE.md)** — draft answers for the questionnaire  
+- **[`docs/PACKAGE_DOCUMENTATION.md`](PACKAGE_DOCUMENTATION.md)** — technical reference (not deployed as metadata)

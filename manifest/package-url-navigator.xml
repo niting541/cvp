@@ -20,7 +20,9 @@
 
     Repo documentation (not deployed as metadata)
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    • docs/PACKAGE_DOCUMENTATION.md — Package documentation, security reviewer appendix, examples
+    • docs/PACKAGE_DOCUMENTATION.md — Package documentation and reviewer appendix
+    • docs/SECURITY_REVIEW_SUBMISSION_STEPS.md — Partner Security Review submission checklist
+    • docs/SECURITY_REVIEW_QUESTIONNAIRE.md — Draft questionnaire answers for Partner portal
     • docs/README-url-navigator-PACKAGE.md — namespace, CLI, 2GP pointers
 
     • 2GP: package alias cvplus (see sfdx-project.json → packageAliases).

@@ -13,6 +13,8 @@ There is **no Flow** or other Salesforce metadata in this repo; subscribers buil
 | `force-app/main/default/lwc/flowUrlRedirect/` | LWC source |
 | `manifest/package-url-navigator.xml` | **Canonical** deploy manifest (this component only) |
 | `docs/PACKAGE_DOCUMENTATION.md` | **Canonical** package, component, configuration, examples, and reviewer appendix |
+| `docs/SECURITY_REVIEW_SUBMISSION_STEPS.md` | **Ordered checklist** for Partner Security Review submission |
+| `docs/SECURITY_REVIEW_QUESTIONNAIRE.md` | **Draft questionnaire answers** for the Partner portal (copy/adapt) |
 | `docs/README-url-navigator-PACKAGE.md` | Namespace, CLI deploy, 2GP pointers |
 | [`docs/README-2GP-SETUP.md`](docs/README-2GP-SETUP.md) | 2GP: package create, new versions, install URLs |
 

@@ -16,7 +16,7 @@
       with client-side validation (http/https only, optional org-relative path,
       no credentials in URL, length and obfuscation checks). See the bundle’s
       urlRedirectUtils.js for the exact rules.
-    • Inputs (Flow): targetUrl (String), openInNewWindow (Boolean).
+    • Inputs (Flow): Public URL / targetUrl (String, required), openInNewWindow (Boolean).
 
     Repo documentation (not deployed as metadata)
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

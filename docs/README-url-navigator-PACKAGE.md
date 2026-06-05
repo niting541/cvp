@@ -38,4 +38,4 @@ After the Dev Hub is connected and the **cvplus** namespace is on that org, foll
 
 ## Current managed package reference
 
-Latest **Subscriber Package Version Id** and install URLs are documented in **[README-2GP-SETUP.md §5](README-2GP-SETUP.md#5-install-a-package-version-in-another-org)** and in **`sfdx-project.json`** → `packageAliases` (today: **`cvplus@0.1.0-3`** → **`04tQj000000Gu1RIAS`**).
+Latest **Subscriber Package Version Id** and install URLs are documented in **[README-2GP-SETUP.md §5](README-2GP-SETUP.md#5-install-a-package-version-in-another-org)** and in **`sfdx-project.json`** → `packageAliases` (today: **`cvplus@0.1.0-4`** → **`04tQj000000GuO1IAK`**).

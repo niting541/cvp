@@ -1,6 +1,6 @@
 <template>
     <!--
-      Security (markup): targetUrl is used only in JS after validation in urlRedirectUtils.js;
+      Security (markup): required Public URL (API targetUrl) is used only in JS after validation in urlRedirectUtils.js;
       it is never written into the DOM or unsafe APIs. Messages use lightning-formatted-text (escaped).
     -->
     <div class="host">
@@ -16,7 +16,7 @@
             </div>
         </template>
         <template lwc:else>
-            <lightning-spinner alternative-text="Opening link" size="medium"></lightning-spinner>
+            <lightning-spinner alternative-text="Opening Public URL" size="medium"></lightning-spinner>
         </template>
     </div>
 </template>

@@ -18,10 +18,10 @@ There is **no Flow** or other Salesforce metadata in this repo; subscribers buil
 
 ## Install managed package (current build)
 
-As of the latest repo state, **version 0.1.0.3** — Subscriber id **`04tQj000000Gu1RIAS`** (see `sfdx-project.json` → `packageAliases`).
+As of the latest repo state, **version 0.1.0.4** — Subscriber id **`04tQj000000GuO1IAK`** (see `sfdx-project.json` → `packageAliases`).
 
-- Production: `https://login.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000Gu1RIAS`
-- Sandbox: `https://test.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000Gu1RIAS`
+- Production: `https://login.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000GuO1IAK`
+- Sandbox: `https://test.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000GuO1IAK`
 
 ## Deploy (unpackaged)
 

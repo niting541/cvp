@@ -2,7 +2,7 @@
 <!--
   Security: lightning__FlowScreen only. No Apex, callouts, or third-party scripts.
   Properties are inputOnly (Flow supplies values; the component does not persist or echo them as HTML).
-  targetUrl is validated in LWC (http/https or same-origin path) before any navigation.
+  Public URL (property targetUrl) is required from Flow, validated in LWC before any navigation.
 -->
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>66.0</apiVersion>
@@ -17,10 +17,10 @@
             <property
                 name="targetUrl"
                 type="String"
-                label="Target URL"
-                description="inputOnly, not stored by the component. Use trusted Flow-built values only. Allowed: https or http URL without userinfo, or org-relative path starting with / (not //). Validated in LWC before navigation."
+                label="Public URL"
+                description="Required (inputOnly). Not stored by the component. Use trusted Flow-built values only. Allowed: https or http URL without userinfo, or org-relative path starting with / (not //). Validated in LWC before navigation."
                 role="inputOnly"
-                required="false"
+                required="true"
             />
             <property
                 name="openInNewWindow"

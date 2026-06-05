@@ -32,11 +32,12 @@ The **business assumption** is that **administrators** (or trusted automation) d
 | **Product / listing name** | URL Navigator |
 | **Registered namespace** | `cvplus` (managed components appear as `cvplus__…` in subscriber orgs) |
 | **2GP package CLI alias** | `cvplus` (see `sfdx-project.json` → `package`) |
+| **Dev Hub package display name** | URL Navigator (set on Dev Hub with `sf package update`; see `docs/README-2GP-SETUP.md` §2a) |
 | **Subscriber Package Id** (`0Ho…`) | `0HoQj000000021pKAA` |
-| **Current package version (at time of writing)** | `0.1.0.3` |
-| **Subscriber Package Version Id** (`04t…`) | `04tQj000000Gu1RIAS` |
-| **Production install URL** | `https://login.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000Gu1RIAS` |
-| **Sandbox install URL** | `https://test.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000Gu1RIAS` |
+| **Current package version (at time of writing)** | `0.1.0.4` |
+| **Subscriber Package Version Id** (`04t…`) | `04tQj000000GuO1IAK` |
+| **Production install URL** | `https://login.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000GuO1IAK` |
+| **Sandbox install URL** | `https://test.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000GuO1IAK` |
 | **Repository / DX project name** | URL Navigator (`sfdx-project.json` → `name`) |
 | **API version (bundle)** | `66.0` |
 | **Packaging commands** | See `docs/README-2GP-SETUP.md` |
@@ -65,7 +66,7 @@ The package contains **one** installable metadata component of subscriber-facing
 
 | Group | Metadata type | Developer name | Purpose |
 | --- | --- | --- | --- |
-| **User interface** | `LightningComponentBundle` | `flowUrlRedirect` | Flow Screen: validate `targetUrl`, then redirect or show errors |
+| **User interface** | `LightningComponentBundle` | `flowUrlRedirect` | Flow Screen: validate required **Public URL** (`targetUrl`), then redirect or show errors |
 
 **Bundled source modules** (not separate Salesforce metadata types; they ship inside the bundle above):
 
@@ -98,7 +99,7 @@ The package contains **one** installable metadata component of subscriber-facing
 
 When a Flow reaches this **Screen** element, the component runs **once** on load (`connectedCallback`). It:
 
-1. Reads Flow inputs `targetUrl` and `openInNewWindow`.
+1. Reads Flow inputs **Public URL** (`targetUrl`, required) and `openInNewWindow`.
 2. Normalizes and validates the URL in JavaScript (`resolveNavigationHref`).
 3. Either navigates the user or displays a **fixed-template** error message with a **Close** control that dispatches `FlowNavigationFinishEvent` so the Flow can continue or end per your Flow design.
 
@@ -110,7 +111,7 @@ Both properties are defined in `flowUrlRedirect.js-meta.xml` with `role="inputOn
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| `targetUrl` | String | No | Destination. Must pass validation (see Section 5). Empty or invalid → error UI, no navigation. |
+| `targetUrl` (Flow label: **Public URL**) | String | **Yes** | Destination. API name `targetUrl`. Must pass validation (see Section 5). Missing, empty, or invalid → error UI, no navigation. |
 | `openInNewWindow` | Boolean | No | If **exactly** `true`, open in a **new** tab. If `false`, `null`, or unset, use **same-tab** navigation after finishing the Flow screen step. |
 
 #### 4.1.4 Outputs and expected behavior
@@ -130,7 +131,7 @@ There are **no Flow output variables** defined by this component; downstream ste
 1. Install the package and open **Flow Builder**.
 2. Add a **Screen** to your Flow.
 3. Drag **URL Navigator — Flow URL Redirect** onto the screen layout.
-4. Set **Target URL** to a resource such as:
+4. Set **Public URL** (`targetUrl`) to a resource such as:
    - A **formula** text that builds `/lightning/r/Opportunity/{!$Record.Id}/view`, or  
    - A fixed `https://` link, or  
    - A **Text** template from trusted fields.
@@ -154,7 +155,7 @@ All messages are **compile-time string literals** in the controller, not derived
 | **Same-tab timing** | Navigation uses `setTimeout(..., 0)` after `FlowNavigationFinishEvent` so the Flow runtime can tear down the screen before `location.assign` runs. |
 | **Origin for relative URLs** | Relative paths resolve with `window.location.origin` (the active Lightning session origin). |
 | **HTTPS vs HTTP** | Both `https:` and `http:` absolute URLs are allowed after validation; prefer `https` for production external sites. |
-| **Trust model** | Treat `targetUrl` as **privileged configuration**. Do not pass unvalidated end-user free text directly from a Screen field into `targetUrl` without business-side checks. |
+| **Trust model** | Treat **Public URL** (`targetUrl`) as **privileged configuration**. Do not pass unvalidated end-user free text directly from a Screen field into this input without business-side checks. |
 
 #### 4.1.8 Dependencies and prerequisites
 
@@ -173,7 +174,7 @@ All messages are **compile-time string literals** in the controller, not derived
 
 | Property | UI control type | Options | Default behavior if omitted |
 | --- | --- | --- | --- |
-| `targetUrl` | Single-line text (Flow) | N/A (free text from Flow) | Treated as invalid if empty/whitespace → error screen. |
+| `targetUrl` (Public URL) | Single-line text (Flow) | N/A (value from Flow) | **Required** in Flow Builder. Empty at runtime → error screen with required-field message. |
 | `openInNewWindow` | Boolean (Flow) | `true` / `false` | Anything other than Boolean `true` is treated as **same tab**. |
 
 There are **no picklists** on the component itself beyond what Flow provides for boolean wiring.
@@ -247,13 +248,13 @@ Each example assumes the Flow screen only contains this component (or that the u
 
 **Expected outcome:** No navigation. Error message explains allowed patterns. **Close** dispatches `FlowNavigationFinishEvent` (design your Flow to handle this as failure or branch).
 
-### 6.5 Empty URL
+### 6.5 Missing Public URL (should not occur if Flow validates)
 
 | Field | Value |
 | --- | --- |
-| `targetUrl` | *(blank)* |
+| `targetUrl` (Public URL) | *(blank — e.g. misconfigured API-only install)* |
 
-**Expected outcome:** Same as invalid: error UI, **Close** to finish screen.
+**Expected outcome:** No navigation. Message states that **Public URL** is required and to set it on the screen component in Flow Builder.
 
 ---
 
@@ -286,6 +287,7 @@ Values below mirror `sfdx-project.json` at documentation time; **reconcile befor
 | --- | --- |
 | 0.1.0.2 | `04tQj000000Gta1IAC` |
 | 0.1.0.3 | `04tQj000000Gu1RIAS` |
+| 0.1.0.4 | `04tQj000000GuO1IAK` |
 
 `versionNumber` in DX remains `0.1.0.NEXT` for the next build; bump per your release policy.
 
@@ -293,7 +295,8 @@ Values below mirror `sfdx-project.json` at documentation time; **reconcile befor
 
 | Version | Highlights |
 | --- | --- |
-| **0.1.0.3** | Current documented build; includes URL validation hardening (controls, same-origin check for relative paths), Flow finish + deferred same-tab navigation, security-oriented metadata and UI copy. |
+| **0.1.0.4** | Required **Public URL** Flow input (`targetUrl`), labels and runtime messages; optional **Open in new window** unchanged. |
+| **0.1.0.3** | URL validation hardening, Flow finish + deferred same-tab navigation, security-oriented metadata. |
 | **Earlier builds** | See git history and Dev Hub package version list for deltas prior to 0.1.0.3. |
 
 ### 7.5 Document history
@@ -301,6 +304,7 @@ Values below mirror `sfdx-project.json` at documentation time; **reconcile befor
 | Revision | Date | Authoring note |
 | --- | --- | --- |
 | 1.0 | 2026-06-04 | Initial standalone package documentation (not derived from prior security-review drafts). |
+| 1.1 | 2026-06-05 | Package **0.1.0.4** / `04tQj000000GuO1IAK`; Public URL required; install URLs refreshed. |
 
 ---
 

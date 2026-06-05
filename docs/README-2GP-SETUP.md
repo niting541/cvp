@@ -4,7 +4,7 @@
 
 Use this after your **Dev Hub** is authenticated and the **`cvplus`** namespace exists on that Dev Hub (Partner Business Org / signup flow per [Salesforce packaging docs](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp.htm)).
 
-This repo is wired for 2GP in `sfdx-project.json`: package alias **`cvplus`** → **`0HoQj000000021pKAA`**, latest version alias **`cvplus@0.1.0-3`** → **`04tQj000000Gu1RIAS`** (version **0.1.0.3**), path **`force-app`**, and `versionNumber` **`0.1.0.NEXT`** for the next build.
+This repo is wired for 2GP in `sfdx-project.json`: package alias **`cvplus`** → **`0HoQj000000021pKAA`**, latest version alias **`cvplus@0.1.0-4`** → **`04tQj000000GuO1IAK`** (version **0.1.0.4**), path **`force-app`**, and `versionNumber` **`0.1.0.NEXT`** for the next build.
 
 ## 1. Dev Hub and default hub
 
@@ -38,9 +38,17 @@ The command prints a **Subscriber Package Id** starting with **`0Ho`**. Add it t
 
 Some CLI versions update `sfdx-project.json` for you; if they do, verify the key is **`cvplus`**.
 
-If your package was **originally** created with another Dev Hub name (for example `cvplusUrlRedirect`), you can still use the local alias **`cvplus`**: point it at the **same** `0Ho…` Subscriber Package Id. Only the alias string in this repo changed; the Salesforce package record is unchanged.
-
 Until this entry exists, **`sf package version create`** will not resolve the package.
+
+### 2a. Change the package name shown in Setup (e.g. replace `cvplusUrlRedirect`)
+
+The **Installed Packages** page shows the **package name from the Dev Hub package record**, not from `sfdx-project.json`. To rename it (for example to **URL Navigator**), run against your **Dev Hub**:
+
+```bash
+sf package update -p cvplus -n "URL Navigator" -d "Your short description." -v YOUR_DEV_HUB_ALIAS
+```
+
+Use `-p` with your alias (`cvplus`) or the Subscriber Package Id (`0Ho…`). Subscriber orgs typically show the new name after the next **package upgrade** (or reinstall); open **Installed Packages** again after upgrading.
 
 ## 3. Create a package version
 
@@ -66,20 +74,20 @@ Bump **`versionNumber`** in `sfdx-project.json` when you move to **0.1.1.NEXT** 
 
 ## 5. Install a package version in another org
 
-After `package version create` succeeds, use the newest **`cvplus@0.1.0-N`** entry in `packageAliases` (today: **`cvplus@0.1.0-3`** → **`04tQj000000Gu1RIAS`**).
+After `package version create` succeeds, use the newest **`cvplus@0.1.0-N`** entry in `packageAliases` (today: **`cvplus@0.1.0-4`** → **`04tQj000000GuO1IAK`**).
 
 **Production install URL** (log in to the target org first):
 
-`https://login.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000Gu1RIAS`
+`https://login.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000GuO1IAK`
 
 **Sandbox install URL:**
 
-`https://test.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000Gu1RIAS`
+`https://test.salesforce.com/packaging/installPackage.apexp?p0=04tQj000000GuO1IAK`
 
 CLI:
 
 ```bash
-sf package install --package 04tQj000000Gu1RIAS --target-org TEST_ORG_ALIAS --wait 20
+sf package install --package 04tQj000000GuO1IAK --target-org TEST_ORG_ALIAS --wait 20
 ```
 
 Replace the `04t` id when you publish a newer package version.

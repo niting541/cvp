@@ -2,7 +2,7 @@
  * Flow screen action: navigates to a URL supplied only by Flow configuration (admin-controlled).
  *
  * Security (AppExchange / secure coding):
- * - Navigation targets are validated in urlRedirectUtils (http/https only, or single-slash org paths;
+ * - Navigation targets (required Public URL / targetUrl) are validated in urlRedirectUtils (http/https only, or single-slash org paths;
  *   blocks javascript:, data:, credentials-in-URL, control chars, bidi/invisible spoofing, etc.).
  * - Same-tab navigation uses location.assign after FlowNavigationFinishEvent so the Flow runtime
  *   tears down cleanly; new-tab uses window.open(..., 'noopener,noreferrer').
@@ -13,7 +13,10 @@ import { FlowNavigationFinishEvent } from 'lightning/flowSupport';
 import { resolveNavigationHref } from './urlRedirectUtils';
 
 export default class FlowUrlRedirect extends LightningElement {
-    /** Full https URL, http URL, or org-relative path such as /lightning/r/Account/xxx/view */
+    /**
+     * Required. Public URL from Flow (https/http absolute URL, or org-relative path starting with /).
+     * Flow Builder label: Public URL. API name remains targetUrl for compatibility.
+     */
     @api targetUrl;
     /** True = new tab/window; false or unset = same tab */
     @api openInNewWindow;
@@ -33,11 +36,18 @@ export default class FlowUrlRedirect extends LightningElement {
     }
 
     runRedirect() {
-        const href = resolveNavigationHref(this.targetUrl, window.location.origin);
+        const raw = this.targetUrl;
+        if (raw == null || (typeof raw === 'string' && raw.trim() === '')) {
+            this.errorMessage =
+                'Public URL is required. In Flow Builder, set the Public URL field on this screen component.';
+            return;
+        }
+
+        const href = resolveNavigationHref(raw, window.location.origin);
 
         if (!href) {
             this.errorMessage =
-                'That link cannot be opened. Use a valid https or http URL (no username or password in the link), or an org path starting with / (for example /lightning/r/Account/001xxx/view).';
+                'That Public URL cannot be opened. Use a valid https or http URL (no username or password in the link), or an org path starting with / (for example /lightning/r/Account/001xxx/view).';
             return;
         }
 
